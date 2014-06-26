@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Easy example | CartoDB.js</title>
+    <title>Claims by Nation</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <link rel="shortcut icon" href="http://cartodb.com/assets/favicon.ico" />
@@ -15,46 +15,10 @@
 
     <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css" />
   </head>
-  <body>
-    <div id="map"></div>
+	<body style="margin:0px;padding:0px;overflow:hidden">
+
 
     <!-- include cartodb.js library -->
-    <script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
-
-    <script>
-      function main() {
-        cartodb.createVis('map', 'http://ajantz.cartodb.com/api/v2/viz/b1960a7a-fd5a-11e3-9827-0e230854a1cb/viz.json', {
-            shareable: true,
-            title: true,
-            description: true,
-            search: true,
-            tiles_loader: true,
-            center_lat: 0,
-            center_lon: 0,
-            zoom: 2
-        })
-        .done(function(vis, layers) {
-          // layer 0 is the base layer, layer 1 is cartodb layer
-          // setInteraction is disabled by default
-          layers[1].setInteraction(true);
-          layers[1].on('featureOver', function(e, pos, latlng, data) {
-            cartodb.log.log(e, pos, latlng, data);
-          });
-
-          // you can get the native map to work with it
-          // depending if you use google maps or leaflet
-          map = vis.getNativeMap();
-
-          // now, perform any operations you need
-          // map.setZoom(3)
-          // map.setCenter(new google.maps.Latlng(...))
-        })
-        .error(function(err) {
-          console.log(err);
-        });
-      }
-
-      window.onload = main;
-    </script>
+    <iframe frameborder="0" style="overflow:hidden;height:100%;width:100%" height="100%" width="100%" src='http://ajantz.cartodb.com/viz/b1960a7a-fd5a-11e3-9827-0e230854a1cb/embed_map?title=true&description=true&search=false&shareable=true&cartodb_logo=true&layer_selector=true&legends=true&scrollwheel=true&fullscreen=true&sublayer_options=1%7C1%7C1&sql=SELECT%20*%20FROM%20all_data%20WHERE%20claim_type%20IN%20('Total')%20AND%20claim_type%20IS%20NOT%20NULL&sw_lat=31.466153715024294&sw_lon=-106.34765625&ne_lat=53.067626642387374&ne_lon=-42.978515625' allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
   </body>
 </html>
